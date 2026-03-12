@@ -2,23 +2,21 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
-const patientRoutes = require("./routes/patientRoutes");
+const bookRoutes = require("./routes/bookRoutes");
 
 dotenv.config();
 
-// database connect
 connectDB();
 
 const app = express();
 
-// middleware
 app.use(express.json());
 app.use(cors());
 
-app.use("/api", patientRoutes);
-// test route
+app.use("/api", bookRoutes);
+
 app.get("/", (req, res) => {
-  res.send("Hospital Backend API Running");
+  res.send("Library Backend API Running");
 });
 
 const PORT = process.env.PORT || 5000;
